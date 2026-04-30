@@ -2,6 +2,8 @@
 // Created by thyhappy on 2026/4/30.
 //
 
+#define THYHAPPYGUI_EXPORTS
+
 #include "../include/thyhappyGUI_core.h"
 
 HWND Hwnd = NULL;

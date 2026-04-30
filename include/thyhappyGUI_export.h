@@ -5,7 +5,7 @@
 #ifndef THYHAPPYGUI_THYHAPPYGUI_EXPORT_H
 #define THYHAPPYGUI_THYHAPPYGUI_EXPORT_H
 
-#ifdef THYUHAPPYGUI_EXPORTS
+#ifdef THYHAPPYGUI_EXPORTS
 #define DLL __declspec(dllexport)
 #else
 #define DLL __declspec(dllimport)

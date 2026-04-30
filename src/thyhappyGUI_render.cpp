@@ -4,3 +4,16 @@
 
 #include "../include/thyhappyGUI_render.h"
 
+namespace thyhappy {
+    namespace init {
+
+    }
+
+    namespace render {
+
+    }
+}
+
+DLL inline void thyhappyRenderDraw() {
+
+}

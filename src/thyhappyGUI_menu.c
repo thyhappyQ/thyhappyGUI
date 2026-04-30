@@ -6,6 +6,11 @@
 
 HWND hwnd = NULL;
 
+#define DEFAULT_M_W_W 200 // Width
+
+int width = DEFAULT_M_W_W;
+int height = 0;
+
 LRESULT CALLBACK wndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
         case WM_CLOSE:
@@ -35,7 +40,30 @@ void static tmRegisterWindow() {
 }
 
 void static tmCreateWindow() {
+    // Get main window size
+    RECT mainRect = {0};
+    GetClientRect(thyhappyGetHWND(), &mainRect);
 
+    // Menu window's height is as the same as main window
+    height = mainRect.bottom - mainRect.top;
+    hwnd = CreateWindow(
+        "ThyhappyGUI Menu",
+        "Menu Title",
+        WS_CHILD,
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        width,
+        height,
+        thyhappyGetHWND(),
+        NULL,
+        GetModuleHandle(NULL),
+        NULL
+        );
+
+    // Check
+    if (!hwnd) {
+        thyhappyError("Failed to create menu window");
+    }
 }
 
 void static tmShowWindow() {

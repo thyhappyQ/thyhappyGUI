@@ -22,4 +22,10 @@ void thyhappyError(const char* content);
 // Get main window HWND
 DLL HWND thyhappyGetHWND();
 
+// Functions for user
+DLL void thyhappySetTitle(const char* title);
+DLL void thyhappySetWidth(int width);
+DLL void thyhappySetHeight(int height);
+DLL void thyhappySetPosition(int x, int y);
+
 #endif //THYHAPPYGUI_THYHAPPYGUI_CORE_H

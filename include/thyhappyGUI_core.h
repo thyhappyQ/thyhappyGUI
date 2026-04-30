@@ -1,0 +1,10 @@
+//
+// Created by thyhappy on 2026/4/30.
+//
+
+#ifndef THYHAPPYGUI_THYHAPPYGUI_CORE_H
+#define THYHAPPYGUI_THYHAPPYGUI_CORE_H
+
+
+
+#endif //THYHAPPYGUI_THYHAPPYGUI_CORE_H

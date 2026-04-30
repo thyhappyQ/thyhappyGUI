@@ -58,7 +58,7 @@ void static tReadMenuConfig() {
 
     thyhappyMenuSetWidth(yyjson_get_int(yyjson_obj_get(root,M_WIDTH_KEY)));
     thyhappyMenuSetEdgeDistance(yyjson_get_int(yyjson_obj_get(root,M_EGDSTC_KEY)));
-    thyhappyMenuSetBlockDistance(yyjson_get_int(yyjson_obj_get(root,M_BKCOLOR_KEY)));
+    thyhappyMenuSetBlockDistance(yyjson_get_int(yyjson_obj_get(root,M_BLDSTC_KEY)));
 
     // Read array
     yyjson_val* mbclArr = yyjson_obj_get(root,M_BKCOLOR_KEY);
@@ -76,6 +76,9 @@ void static tReadMenuConfig() {
 DLL void thyhappyConfigInitialize() {
     tReadWindowConfig();
     tReadMenuConfig();
+
+    thyhappyInitialize();
+    thyhappyMenuInitialize();
 }
 
 DLL bool thyhappyConfigWindowShouldClose() {
@@ -85,4 +88,5 @@ DLL bool thyhappyConfigWindowShouldClose() {
 DLL void thyhappyConfigCleanUp() {
     yyjson_doc_free(wDoc);
     yyjson_doc_free(mDoc);
+    thyhappyCleanUp();
 }

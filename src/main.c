@@ -7,5 +7,7 @@
 // This file is created to help me debug
 
 int main() {
-
+    thyhappyConfigInitialize();
+    while (!thyhappyConfigWindowShouldClose()){}
+    thyhappyConfigCleanUp();
 }

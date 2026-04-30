@@ -89,7 +89,7 @@ DLL HWND thyhappyGetHWND() {
 
 void static tCreateWindow() {
     Hwnd = CreateWindow(
-        "ThyhappyGUi",
+        "ThyhappyGUI",
         wTitle,
         WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
         wX,
@@ -133,12 +133,13 @@ void static tDoWithInput() {
 
 DLL BOOL thyhappyWindowShouldClose() {
     // Get message
-    PeekMessage(&msg,NULL,0,0,PM_REMOVE);
-    if (msg.message == WM_QUIT) {
-        return TRUE;
-    }
+    while(PeekMessage(&msg,NULL,0,0,PM_REMOVE)) {
+        if (msg.message == WM_QUIT) {
+            return TRUE;
+        }
 
-    tDoWithInput();
+        tDoWithInput();
+    }
 
     // Because this function will be called every tick
     // So I do other things in this function

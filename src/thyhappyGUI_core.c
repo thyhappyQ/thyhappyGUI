@@ -101,7 +101,7 @@ DLL inline void thyhappyInitialize() {
     tShowWindow();
 }
 
-DLL inline void thyhappyWindowShouldClose() {
+DLL inline BOOL thyhappyWindowShouldClose() {
 
 }
 

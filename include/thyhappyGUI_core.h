@@ -11,7 +11,7 @@
 
 // Base functions
 DLL void thyhappyInitialize();
-DLL void thyhappyWindowShouldClose();
+DLL BOOL thyhappyWindowShouldClose();
 DLL void thyhappyCleanUp();
 
 // Call a message window to show error

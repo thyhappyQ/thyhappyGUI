@@ -4,7 +4,7 @@
 
 #include "../include/thyhappyGUI_core.h"
 
-HWND Hwnd = nullptr;
+HWND Hwnd = NULL;
 
 #define DEFAULT_WINDOW_TITLE "Default title"
 #define DEFAULT_WINDOW_WIDTH 800
@@ -22,7 +22,7 @@ int wY = DEFAULT_WINDOW_POS;
 MSG msg = {0};
 
 DLL inline void thyhappySetTitle(const char* title) {
-    wTitle = title == nullptr ? "" : title;
+    wTitle = title == NULL ? "" : title;
 }
 
 DLL inline void thyhappySetWidth(const int width) {
@@ -45,7 +45,7 @@ LRESULT CALLBACK wndProc(HWND hwnd,UINT msg,WPARAM wParam,LPARAM lParam) {
 }
 
 void thyhappyError(const char* content) {
-    MessageBox(nullptr, content, "Error", MB_OK | MB_ICONERROR);
+    MessageBox(NULL, content, "Error", MB_OK | MB_ICONERROR);
 }
 
 void static tRegisterWindow() {
@@ -55,8 +55,8 @@ void static tRegisterWindow() {
     // Set window class properties
     wc.lpszClassName = "ThyhappyGUI";
     wc.lpfnWndProc = wndProc;
-    wc.hInstance = GetModuleHandle(nullptr);
-    wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wc.hInstance = GetModuleHandle(NULL);
+    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 
     // Do with error
     if (!RegisterClass(&wc)) {
@@ -77,10 +77,10 @@ void static tCreateWindow() {
         wY,
         wWidth,
         wHeight,
-        nullptr,
-        nullptr,
-        GetModuleHandle(nullptr),
-        nullptr
+        NULL,
+        NULL,
+        GetModuleHandle(NULL),
+        NULL
         );
 
     // Do with error
@@ -109,7 +109,7 @@ void static tDoWithInput() {
 }
 
 DLL inline BOOL thyhappyWindowShouldClose() {
-    PeekMessage(&msg,nullptr,0,0,PM_REMOVE);
+    PeekMessage(&msg,NULL,0,0,PM_REMOVE);
     if (msg.message == WM_QUIT) {
         return TRUE;
     }

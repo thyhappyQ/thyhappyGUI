@@ -166,6 +166,9 @@ DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
     // Add counter
     step++;
 }
+DLL void thyhappyMenuSetWidth(const int new_width) {
+    width = new_width;
+}
 
 DLL void thyhappyMenuSetBkColor(const float color[4]) {
     mbkColor[0] = color[0];

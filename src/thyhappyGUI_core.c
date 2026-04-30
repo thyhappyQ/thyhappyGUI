@@ -67,7 +67,24 @@ DLL inline HWND thyhappyGetHWND() {
 }
 
 void static tCreateWindow() {
+    Hwnd = CreateWindow(
+        "ThyhappyGUi",
+        wTitle,
+        WS_OVERLAPPEDWINDOW,
+        wX,
+        wY,
+        wWidth,
+        wHeight,
+        nullptr,
+        nullptr,
+        GetModuleHandle(nullptr),
+        nullptr
+        );
 
+    // Do with error
+    if (!Hwnd) {
+        thyhappyError("Failed to create window");
+    }
 }
 
 DLL inline void thyhappyInitialize() {

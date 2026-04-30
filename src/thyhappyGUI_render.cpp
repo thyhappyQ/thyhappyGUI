@@ -20,6 +20,24 @@ namespace thyhappy {
             }
         }
 
+        void createHwndRenderTarget() {
+            // Get main window size
+            RECT rect = {0};
+            GetClientRect(thyhappyGetHWND(), &rect);
+
+            // Save the window size in a size_u variable
+            const D2D1_SIZE_U size = D2D1::SizeU(rect.right, rect.bottom);
+
+            mf->CreateHwndRenderTarget(
+                D2D1::RenderTargetProperties(),
+                D2D1::HwndRenderTargetProperties(thyhappyGetHWND(),size),
+                &mrt
+                );
+            if (!mrt) {
+                thyhappyError("Failed to create render target");
+            }
+        }
+
         void initialize() {
 
         }

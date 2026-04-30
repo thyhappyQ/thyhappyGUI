@@ -117,9 +117,13 @@ void static tShowWindow() {
 DLL inline void thyhappyInitialize() {
     /* Implement core initialize function */
 
+    // Init window
     tRegisterWindow();
     tCreateWindow();
     tShowWindow();
+
+    // init d2d
+    thyhappyRenderInitialize();
 }
 
 void static tDoWithInput() {
@@ -128,11 +132,20 @@ void static tDoWithInput() {
 }
 
 DLL inline BOOL thyhappyWindowShouldClose() {
+    // Get message
     PeekMessage(&msg,NULL,0,0,PM_REMOVE);
     if (msg.message == WM_QUIT) {
         return TRUE;
     }
+
     tDoWithInput();
+
+    // Because this function will be called every tick
+    // So I do other things in this function
+
+    // Render
+    thyhappyRenderDraw();
+
     return FALSE;
 }
 

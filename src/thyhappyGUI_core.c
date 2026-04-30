@@ -100,3 +100,11 @@ DLL inline void thyhappyInitialize() {
     tCreateWindow();
     tShowWindow();
 }
+
+DLL inline void thyhappyWindowShouldClose() {
+
+}
+
+DLL inline void thyhappyCleanUp() {
+
+}

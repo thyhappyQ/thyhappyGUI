@@ -7,6 +7,8 @@
 
 #include "thyhappyGUI_core.h"
 
+DLL void thyhappyMenuInitialize();
 DLL void thyhappyMenuRegister();
+DLL void thyhappyMenuCleanUp();
 
 #endif //THYHAPPYGUI_THYHAPPYGUI_MENU_H

@@ -67,11 +67,14 @@ void static tmCreateWindow() {
 }
 
 void static tmShowWindow() {
-
+    ShowWindow(hwnd, SW_SHOW);
+    UpdateWindow(hwnd);
 }
 
 DLL inline void thyhappyMenuInitialize() {
-
+    tmRegisterWindow();
+    tmCreateWindow();
+    tmShowWindow();
 }
 
 DLL inline void thyhappyMenuRegister() {

@@ -18,6 +18,9 @@ BOOL tmInitialized = FALSE;
 BOOL tmRegistered = FALSE;
 tmb* mbArr = NULL;
 
+size_t step = 0;
+size_t alloced = MB_ARR_SIZE;
+
 unsigned int blockSize[2] = {0};
 
 unsigned int egDstc = 0;
@@ -115,11 +118,46 @@ DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
         }
 
         // Work out each block's size
+        {
+            // Work out the width of block
+            if (width > 2 * egDstc) {
+                blockSize[0] = width - 2 * egDstc;
+            }
 
+            // Work out the height
+            // Default height of the menu block is the 1/10 of window height
+            if (height > 2 * egDstc) {
+                blockSize[1] = height / 10;;
+            }
+        }
     }
 
+    // Put arg block into array
+    {
+        // Check if the memory is big enough
+        if (step + 1 == alloced) {
+            // Alloc new memory
+            tmb* newMem = realloc(mbArr, (step + MB_ARR_SIZE) * sizeof(tmb));
+            if (!newMem) {
+                thyhappyError("Failed to allocate new memory for menu block");
+                return;
+            }
+            mbArr = newMem;
+        }
 
+        // Put
+        mbArr[step].block = block;
+
+        // Work out the y position of this block
+        // Y = blDstc + (step + 1)*menuBlockHeight
+        // SO :
+        mbArr[step].y = blDstc + (step+1) * blockSize[1];
+    }
+
+    // Add counter
+    step++;
 }
 
 DLL void thyhappyMenuCleanUp() {
+    free(mbArr);
 }

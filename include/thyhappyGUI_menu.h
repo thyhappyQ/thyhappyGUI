@@ -32,6 +32,9 @@ extern tmb* mbArr;
 extern unsigned int egDstc;
 extern size_t step;
 
+extern float mbkColor[4];
+extern float mbBkColor[4];
+
 DLL void thyhappyMenuInitialize();
 DLL void thyhappyMenuRegister(thyhappyMenuBlock block);
 DLL void thyhappyMenuCleanUp();
@@ -41,6 +44,8 @@ DLL HWND thyhappyMenuGetHWND();
 
 DLL void thyhappyMenuSetEdgeDistance(unsigned int edgeDistance);
 DLL void thyhappyMenuSetBlockDistance(unsigned int blockDistance);
+DLL void thyhappyMenuSetBkColor(const float color[4]);
+DLL void thyhappyMenuSetMbBkColor(const float mbBkColor[4]);
 
 #ifdef __cplusplus
 }

@@ -164,6 +164,20 @@ DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
     step++;
 }
 
+DLL void thyhappyMenuSetBkColor(const float color[4]) {
+    mbkColor[0] = color[0];
+    mbkColor[1] = color[1];
+    mbkColor[2] = color[2];
+    mbkColor[3] = color[3];
+}
+
+DLL void thyhappyMenuSetMbBkColor(const float color[4]) {
+    mbBkColor[0] = color[0];
+    mbBkColor[1] = color[1];
+    mbBkColor[2] = color[2];
+    mbBkColor[3] = color[3];
+}
+
 DLL HWND thyhappyMenuGetHWND() {
     return hwnd;
 }

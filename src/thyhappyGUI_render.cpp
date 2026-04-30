@@ -76,10 +76,24 @@ namespace thyhappy {
         }
     }
 
-    namespace render {
+    namespace main {
         void drawBk() {
             // Draw background
             mrt->Clear(D2D1::ColorF(wBkColor[0],wBkColor[1],wBkColor[2],wBkColor[3]));
+        }
+
+        void drawMain() {
+            mrt->BeginDraw();
+            {
+                // Real render code
+                drawBk();
+            }
+            mrt->EndDraw();
+        }
+    }
+    namespace menu {
+        void drawBk() {
+
         }
 
         void drawMenuBlock() {
@@ -94,15 +108,6 @@ namespace thyhappy {
                        mbBrush
                    );
             }
-        }
-
-        void drawMain() {
-            mrt->BeginDraw();
-            {
-                // Real render code
-                drawBk();
-            }
-            mrt->EndDraw();
         }
 
         void drawMenu() {
@@ -128,6 +133,6 @@ extern "C" DLL void thyhappyRenderMenuInitialize() {
 }
 
 extern "C" DLL void thyhappyRenderDraw() {
-    thyhappy::render::drawMain();
-    thyhappy::render::drawMenu();
+    thyhappy::main::drawMain();
+    thyhappy::menu::drawMenu();
 }

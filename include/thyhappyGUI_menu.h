@@ -7,8 +7,6 @@
 
 #include "thyhappyGUI_core.h"
 
-extern BOOL tmInitialized;
-
 struct _thyhappyMenuBlock {
     const char* name;
     const void(*callback)(); // When use press this block,program will give a callback
@@ -16,8 +14,22 @@ struct _thyhappyMenuBlock {
 
 typedef struct _thyhappyMenuBlock thyhappyMenuBlock;
 
+struct _tmb {
+    thyhappyMenuBlock block;
+    int x;
+    int y;
+};
+
+typedef struct _tmb tmb;
+
+extern BOOL tmInitialized;
+extern BOOL tmRegistered;
+extern tmb* mbArr;
+
 DLL void thyhappyMenuInitialize();
-DLL void thyhappyMenuRegister();
-DLL void thyhappyMenuCleanUp(thyhappyMenuBlock block);
+DLL void thyhappyMenuRegister(thyhappyMenuBlock block);
+DLL void thyhappyMenuCleanUp();
+
+DLL unsigned int* thyhappyMenuGetBlockSize();
 
 #endif //THYHAPPYGUI_THYHAPPYGUI_MENU_H

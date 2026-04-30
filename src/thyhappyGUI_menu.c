@@ -3,14 +3,22 @@
 //
 #include "../include/thyhappyGUI_menu.h"
 
+#include <stdlib.h>
+
 HWND hwnd = NULL;
 
 #define DEFAULT_M_W_W 200 // Width
+
+#define MB_ARR_SIZE 10
 
 int width = DEFAULT_M_W_W;
 int height = 0;
 
 BOOL tmInitialized = FALSE;
+BOOL tmRegistered = FALSE;
+tmb* mbArr = NULL;
+
+unsigned int blockSize[2] = {0};
 
 LRESULT CALLBACK mWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
@@ -80,10 +88,27 @@ DLL void thyhappyMenuInitialize() {
     tmInitialized = TRUE;
 }
 
-DLL void thyhappyMenuRegister() {
-    if (TRUE){}
+DLL unsigned int* thyhappyMenuGetBlockSize() {
+    return blockSize;
+}
+
+DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
+    if (tmRegistered == FALSE) {
+        tmRegistered == TRUE;
+
+        // Init menu block array
+        mbArr = calloc(MB_ARR_SIZE, sizeof(tmb));
+        if (!mbArr) {
+            thyhappyError("Failed to allocate memory for menu block");
+            return;
+        }
+
+        // Work out each block's size
+
+    }
+
+
 }
 
 DLL void thyhappyMenuCleanUp() {
-    if (TRUE){}
 }

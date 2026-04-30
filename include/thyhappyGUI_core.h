@@ -19,4 +19,7 @@ DLL void thyhappyCleanUp();
 // so I do not export it in DLL
 void thyhappyError(const char* content);
 
+// Get main window HWND
+DLL HWND thyhappyGetHWND();
+
 #endif //THYHAPPYGUI_THYHAPPYGUI_CORE_H

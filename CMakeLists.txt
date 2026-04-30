@@ -10,5 +10,6 @@ add_library(menuDll SHARED src/thyhappyGUI_menu.c)
 target_compile_definitions(dll PRIVATE THYHAPPYGUI_EXPORTS)
 target_compile_definitions(menuDll PRIVATE THYHAPPYGUI_EXPORTS)
 
+target_link_libraries(menuDll dll)
 target_link_libraries(main dll)
 target_link_libraries(main menuDll)

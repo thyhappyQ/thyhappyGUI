@@ -45,7 +45,10 @@ namespace thyhappy {
     }
 
     namespace render {
+        void drawBk() {
+            // Draw background
 
+        }
     }
 }
 

@@ -27,4 +27,12 @@ DLL void thyhappySetHeight(int height);
 DLL void thyhappySetPosition(int x, int y);
 DLL void thyhappySetBackgroundColor(const float color[4]);
 
+// Public global variables
+extern int wWidth;
+extern int wHeight;
+extern const char* wTitle;
+extern float wBkColor[4];
+extern int wX;
+extern int wY;
+
 #endif //THYHAPPYGUI_THYHAPPYGUI_CORE_H

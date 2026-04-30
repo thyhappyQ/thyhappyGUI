@@ -19,6 +19,8 @@ const char* wTitle = DEFAULT_WINDOW_TITLE;
 int wX = DEFAULT_WINDOW_POS;
 int wY = DEFAULT_WINDOW_POS;
 
+MSG msg = {0};
+
 DLL inline void thyhappySetTitle(const char* title) {
     wTitle = title == nullptr ? "" : title;
 }
@@ -101,8 +103,18 @@ DLL inline void thyhappyInitialize() {
     tShowWindow();
 }
 
-DLL inline BOOL thyhappyWindowShouldClose() {
+void static tDoWithInput() {
+    TranslateMessage(&msg);
+    DispatchMessage(&msg);
+}
 
+DLL inline BOOL thyhappyWindowShouldClose() {
+    PeekMessage(&msg,nullptr,0,0,PM_REMOVE);
+    if (msg.message == WM_QUIT) {
+        return TRUE;
+    }
+    tDoWithInput();
+    return FALSE;
 }
 
 DLL inline void thyhappyCleanUp() {

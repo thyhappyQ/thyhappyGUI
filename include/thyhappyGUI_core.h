@@ -25,5 +25,6 @@ DLL void thyhappySetTitle(const char* title);
 DLL void thyhappySetWidth(int width);
 DLL void thyhappySetHeight(int height);
 DLL void thyhappySetPosition(int x, int y);
+DLL void thyhappySetBackgroundColor(const float color[4]);
 
 #endif //THYHAPPYGUI_THYHAPPYGUI_CORE_H

@@ -10,10 +10,12 @@ HWND Hwnd = NULL;
 #define DEFAULT_WINDOW_WIDTH 800
 #define DEFAULT_WINDOW_HEIGHT 800
 #define DEFAULT_WINDOW_POS CW_USEDEFAULT
+#define DEFAULT_WINDOW_BACKGROUND_COLOR { 1.0f, 1.0f, 1.0f, 1.0f }
 
 int wWidth = DEFAULT_WINDOW_WIDTH;
 int wHeight = DEFAULT_WINDOW_HEIGHT;
 const char* wTitle = DEFAULT_WINDOW_TITLE;
+float wBkColor[4] = DEFAULT_WINDOW_BACKGROUND_COLOR;
 
 // Window positions
 int wX = DEFAULT_WINDOW_POS;
@@ -54,6 +56,13 @@ LRESULT CALLBACK wndProc(HWND hwnd,UINT msg,WPARAM wParam,LPARAM lParam) {
 
 void thyhappyError(const char* content) {
     MessageBox(NULL, content, "Error", MB_OK | MB_ICONERROR);
+}
+
+DLL inline void thyhappySetBackgroundColor(const float color[4]) {
+    wBkColor[0] = color[0];
+    wBkColor[1] = color[1];
+    wBkColor[2] = color[2];
+    wBkColor[3] = color[3];
 }
 
 void static tRegisterWindow() {

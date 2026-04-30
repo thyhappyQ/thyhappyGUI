@@ -16,7 +16,7 @@ typedef struct _thyhappyMenuBlock thyhappyMenuBlock;
 
 struct _tmb {
     thyhappyMenuBlock block;
-    int y;
+    float pos[4];
 };
 
 typedef struct _tmb tmb;

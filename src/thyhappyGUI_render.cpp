@@ -47,7 +47,7 @@ namespace thyhappy {
     namespace render {
         void drawBk() {
             // Draw background
-
+            mrt->Clear(D2D1::ColorF(wBkColor[0],wBkColor[1],wBkColor[2],wBkColor[3]));
         }
     }
 }
@@ -60,6 +60,7 @@ DLL inline void thyhappyRenderDraw() {
     thyhappy::mrt->BeginDraw();
     {
         // Real render code
+        thyhappy::render::drawBk();
     }
     thyhappy::mrt->EndDraw();
 }

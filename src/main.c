@@ -4,3 +4,8 @@
 
 #include "../include/thyhappyGUI_core.h"
 
+int main() {
+    thyhappyInitialize();
+    while (!thyhappyWindowShouldClose()){}
+    thyhappyCleanUp();
+}

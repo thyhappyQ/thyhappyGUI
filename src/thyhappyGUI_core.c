@@ -4,6 +4,8 @@
 
 #include "../include/thyhappyGUI_core.h"
 
+#include "../include/thyhappyGUI_render.h"
+
 HWND Hwnd = NULL;
 
 #define DEFAULT_WINDOW_TITLE "Default title"

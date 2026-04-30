@@ -32,4 +32,7 @@ DLL void thyhappyMenuCleanUp();
 
 DLL unsigned int* thyhappyMenuGetBlockSize();
 
+DLL void thyhappyMenuSetEdgeDistance(unsigned int edgeDistance);
+DLL void thyhappyMenuSetBlockDistance(unsigned int blockDistance);
+
 #endif //THYHAPPYGUI_THYHAPPYGUI_MENU_H

@@ -20,6 +20,9 @@ tmb* mbArr = NULL;
 
 unsigned int blockSize[2] = {0};
 
+unsigned int egDstc = 0;
+unsigned int blDstc = 0;
+
 LRESULT CALLBACK mWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
         case WM_CLOSE:
@@ -90,6 +93,14 @@ DLL void thyhappyMenuInitialize() {
 
 DLL unsigned int* thyhappyMenuGetBlockSize() {
     return blockSize;
+}
+
+DLL void thyhappyMenuSetBlockDistance(unsigned int blockDistance) {
+    blDstc = blockDistance;
+}
+
+DLL void thyhappyMenuSetEdgeDistance(unsigned int edgeDistance) {
+    egDstc = edgeDistance;
 }
 
 DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {

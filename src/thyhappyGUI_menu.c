@@ -4,6 +4,8 @@
 
 #include "../include/thyhappyGUI_menu.h"
 
+HWND hwnd = NULL;
+
 LRESULT CALLBACK wndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
         case WM_CLOSE:
@@ -19,8 +21,17 @@ LRESULT CALLBACK wndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 }
 
 void static tmRegisterWindow() {
+    // Set window class properties
     WNDCLASS wc = {0};
+    wc.lpfnWndProc = wndProc;
+    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+    wc.hInstance = GetModuleHandle(NULL);
+    wc.lpszClassName = "ThyhappyGUI Menu";
 
+    // Do with error
+    if (!RegisterClass(&wc)) {
+        thyhappyError("Failed to register menu window class");
+    }
 }
 
 void static tmCreateWindow() {

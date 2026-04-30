@@ -26,7 +26,7 @@ void static tRegisterWindow() {
 
     // Do with error
     if (!RegisterClass(&wc)) {
-        return;
+        thyhappyError("Failed to register window class");
     }
 }
 

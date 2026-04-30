@@ -12,6 +12,8 @@ namespace thyhappy {
     ID2D1Factory* mf = nullptr; // Main factory
     ID2D1HwndRenderTarget* mrt = nullptr; // Main render target
 
+    ID2D1SolidColorBrush* mbBrush = nullptr;
+
     namespace init {
         void createMainFactory(){
             D2D1CreateFactory(D2D1_FACTORY_TYPE_MULTI_THREADED, &mf);
@@ -38,9 +40,21 @@ namespace thyhappy {
             }
         }
 
+        void initMbBrush() {
+            mrt->CreateSolidColorBrush(D2D1::ColorF(0.8f,0.8f,0.8f,1.0f),&mbBrush);
+            if (!mbBrush) {
+                thyhappyError("Failed to create menu block brush");
+            }
+        }
+
+        void initBrush() {
+            initMbBrush();
+        }
+
         void initialize() {
             createMainFactory();
             createHwndRenderTarget();
+            initBrush();
         }
     }
 
@@ -48,6 +62,11 @@ namespace thyhappy {
         void drawBk() {
             // Draw background
             mrt->Clear(D2D1::ColorF(wBkColor[0],wBkColor[1],wBkColor[2],wBkColor[3]));
+        }
+
+        void drawMenuBlock() {
+
+            mrt->FillRoundedRectangle();
         }
     }
 }

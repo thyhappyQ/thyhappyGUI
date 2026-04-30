@@ -9,13 +9,15 @@
 
 extern BOOL tmInitialized;
 
-struct thyhappyMenuBlock {
+struct _thyhappyMenuBlock {
     const char* name;
     const void(*callback)(); // When use press this block,program will give a callback
 };
 
+typedef struct _thyhappyMenuBlock thyhappyMenuBlock;
+
 DLL void thyhappyMenuInitialize();
 DLL void thyhappyMenuRegister();
-DLL void thyhappyMenuCleanUp();
+DLL void thyhappyMenuCleanUp(thyhappyMenuBlock block);
 
 #endif //THYHAPPYGUI_THYHAPPYGUI_MENU_H

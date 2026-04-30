@@ -10,6 +10,10 @@ LRESULT CALLBACK wndProc(HWND hwnd,UINT msg,WPARAM wParam,LPARAM lParam) {
     }
 }
 
+void thyhappyError(const char* content) {
+    MessageBox(nullptr, content, "Error", MB_OK | MB_ICONERROR);
+}
+
 void static tRegisterWindow() {
     // Register a window
     WNDCLASS wc = {0};

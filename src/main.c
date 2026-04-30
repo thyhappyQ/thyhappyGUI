@@ -6,6 +6,7 @@
 
 int main() {
     const float a[4] = {0.0f,0.0f,0.2f,1.0f};
+
     thyhappySetTitle("Title");
     thyhappySetHeight(1000);
     thyhappySetWidth(1000);
@@ -13,6 +14,10 @@ int main() {
 
     thyhappyInitialize();
     thyhappyMenuInitialize();
+
+    const thyhappyMenuBlock aa = {"a",NULL};
+
+    thyhappyMenuRegister(aa);
 
     while (!thyhappyWindowShouldClose()){}
 

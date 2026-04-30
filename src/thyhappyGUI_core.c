@@ -42,6 +42,14 @@ DLL inline void thyhappySetPosition(const int x, const int y) {
 
 LRESULT CALLBACK wndProc(HWND hwnd,UINT msg,WPARAM wParam,LPARAM lParam) {
     switch (msg) {
+        case WM_CLOSE:
+            DestroyWindow(hwnd);
+            return 0;
+
+        case WM_DESTROY:
+            PostQuitMessage(0);
+            return 0;
+
         default: return DefWindowProc(hwnd,msg,wParam,lParam);
     }
 }

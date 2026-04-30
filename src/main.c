@@ -13,12 +13,16 @@ int main() {
     thyhappySetWidth(1000);
     thyhappySetBackgroundColor(a);
 
+    thyhappyMenuSetBlockDistance(50);
+    thyhappyMenuSetEdgeDistance(10);
+
     thyhappyInitialize();
     thyhappyMenuInitialize();
     thyhappyRenderMenuInitialize();
 
     const thyhappyMenuBlock aa = {"a",NULL};
 
+    thyhappyMenuRegister(aa);
     thyhappyMenuRegister(aa);
 
     while (!thyhappyWindowShouldClose()){}

@@ -10,6 +10,7 @@ extern "C" {
 #endif
 
 #include "thyhappyGUI_core.h"
+#include "thyhappyGUI_render.h"
 
 struct _thyhappyMenuBlock {
     const char* name;

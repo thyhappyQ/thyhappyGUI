@@ -3,7 +3,6 @@
 //
 
 #include "../include/thyhappyGUI_menu.h"
-#include "../include/thyhappyGUI_render.h"
 
 // This file is created to help me debug
 
@@ -20,7 +19,6 @@ int main() {
 
     thyhappyInitialize();
     thyhappyMenuInitialize();
-    thyhappyRenderMenuInitialize();
 
     const thyhappyMenuBlock aa = {"a",NULL};
 

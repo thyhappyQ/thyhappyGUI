@@ -91,6 +91,8 @@ DLL void thyhappyMenuInitialize() {
     tmCreateWindow();
     tmShowWindow();
 
+    thyhappyRenderMenuInitialize();
+
     tmInitialized = TRUE;
 }
 

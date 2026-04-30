@@ -151,7 +151,11 @@ DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
         // Work out the y position of this block
         // Y = blDstc + (step + 1)*menuBlockHeight
         // SO :
-        mbArr[step].y = blDstc + (step+1) * blockSize[1];
+
+        // Left x = egDstc
+        mbArr[step].pos[0] = blDstc + step * blockSize[1]; // Left y
+        mbArr[step].pos[1] = egDstc + blockSize[0]; // Right top
+        mbArr[step].pos[2] = mbArr[step].pos[0] + blockSize[1]; // Right down
     }
 
     // Add counter

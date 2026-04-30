@@ -10,7 +10,7 @@ HWND hwnd = NULL;
 int width = DEFAULT_M_W_W;
 int height = 0;
 
-LRESULT CALLBACK wndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK mWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
         case WM_CLOSE:
             DestroyWindow(hwnd);
@@ -27,7 +27,7 @@ LRESULT CALLBACK wndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 void static tmRegisterWindow() {
     // Set window class properties
     WNDCLASS wc = {0};
-    wc.lpfnWndProc = wndProc;
+    wc.lpfnWndProc = mWndProc;
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     wc.hInstance = GetModuleHandle(NULL);
     wc.lpszClassName = "ThyhappyGUI Menu";

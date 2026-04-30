@@ -13,6 +13,7 @@ extern "C" {
 
 DLL void thyhappyRenderInitialize();
 DLL void thyhappyRenderDraw();
+DLL void thyhappyRenderMenuInitialize();
 //DLL void thyhappyRenderCleanUp();
 
 #ifdef __cplusplus

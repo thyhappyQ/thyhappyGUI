@@ -108,7 +108,7 @@ DLL void thyhappyMenuSetEdgeDistance(unsigned int edgeDistance) {
 
 DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
     if (tmRegistered == FALSE) {
-        tmRegistered == TRUE;
+        tmRegistered = TRUE;
 
         // Init menu block array
         mbArr = calloc(MB_ARR_SIZE, sizeof(tmb));
@@ -152,14 +152,18 @@ DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
         // Y = blDstc + (step + 1)*menuBlockHeight
         // SO :
 
-        // Left x = egDstc
-        mbArr[step].pos[0] = blDstc + step * blockSize[1]; // Left y
-        mbArr[step].pos[1] = egDstc + blockSize[0]; // Right top
-        mbArr[step].pos[2] = mbArr[step].pos[0] + blockSize[1]; // Right down
+        // X in left = egDstc
+        mbArr[step].pos[0] = (float)(egDstc + step * blockSize[1]); // Y in left
+        mbArr[step].pos[1] = (float)(egDstc + blockSize[0]); // X in right
+        mbArr[step].pos[2] = mbArr[step].pos[0] + blockSize[1]; // Y in right
     }
 
     // Add counter
     step++;
+}
+
+DLL HWND thyhappyMenuGetHWND() {
+    return hwnd;
 }
 
 DLL void thyhappyMenuCleanUp() {

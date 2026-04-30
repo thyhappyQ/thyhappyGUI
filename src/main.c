@@ -3,6 +3,7 @@
 //
 
 #include "../include/thyhappyGUI_menu.h"
+#include "../include/thyhappyGUI_render.h"
 
 int main() {
     const float a[4] = {0.0f,0.0f,0.2f,1.0f};
@@ -14,6 +15,7 @@ int main() {
 
     thyhappyInitialize();
     thyhappyMenuInitialize();
+    thyhappyRenderMenuInitialize();
 
     const thyhappyMenuBlock aa = {"a",NULL};
 

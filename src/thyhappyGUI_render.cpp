@@ -39,7 +39,8 @@ namespace thyhappy {
         }
 
         void initialize() {
-
+            createMainFactory();
+            createHwndRenderTarget();
         }
     }
 
@@ -48,6 +49,14 @@ namespace thyhappy {
     }
 }
 
-DLL inline void thyhappyRenderDraw() {
+DLL inline void thyhappyRenderInitialize() {
+    thyhappy::init::initialize();
+}
 
+DLL inline void thyhappyRenderDraw() {
+    thyhappy::mrt->BeginDraw();
+    {
+        // Real render code
+    }
+    thyhappy::mrt->EndDraw();
 }

@@ -11,7 +11,9 @@ extern "C" {
 
 #include "thyhappyGUI_core.h"
 
+DLL void thyhappyRenderInitialize();
 DLL void thyhappyRenderDraw();
+//DLL void thyhappyRenderCleanUp();
 
 #ifdef __cplusplus
 }

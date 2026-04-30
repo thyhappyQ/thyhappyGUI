@@ -26,6 +26,9 @@ unsigned int blockSize[2] = {0};
 unsigned int egDstc = 0;
 unsigned int blDstc = 0;
 
+float mbkColor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
+float mbBkColor[4] = {0.3f, 0.3f, 0.4f, 0.5f};
+
 LRESULT CALLBACK mWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
         case WM_CLOSE:

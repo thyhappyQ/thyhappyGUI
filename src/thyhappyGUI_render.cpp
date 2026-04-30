@@ -60,7 +60,13 @@ namespace thyhappy {
         }
 
         void initMbBrush() {
-            mbrt->CreateSolidColorBrush(D2D1::ColorF(0.8f,0.8f,0.8f,1.0f),&mbBrush);
+            mbrt->CreateSolidColorBrush(
+                D2D1::ColorF(
+                    mbBkColor[0],
+                    mbBkColor[1],
+                    mbBkColor[2],
+                    mbBkColor[3]),
+                    &mbBrush);
             if (!mbBrush) {
                 thyhappyError("Failed to create menu block brush");
             }
@@ -93,7 +99,7 @@ namespace thyhappy {
     }
     namespace menu {
         void drawBk() {
-
+            mbrt->Clear(D2D1::ColorF(mbkColor[0],mbkColor[1],mbkColor[2],mbkColor[3]));
         }
 
         void drawMenuBlock() {

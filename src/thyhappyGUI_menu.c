@@ -153,7 +153,7 @@ DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
         // SO :
 
         // X in left = egDstc
-        mbArr[step].pos[0] = (float)(egDstc + blDstc + step * blockSize[1]); // Y in left
+        mbArr[step].pos[0] = (float)(egDstc +  step * (blockSize[1] + blDstc)); // Y in left
         mbArr[step].pos[1] = (float)(egDstc + blockSize[0]); // X in right
         mbArr[step].pos[2] = mbArr[step].pos[0] + blockSize[1]; // Y in right
     }

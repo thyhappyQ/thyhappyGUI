@@ -91,4 +91,5 @@ DLL inline void thyhappyInitialize() {
     /* Implement core initialize function */
 
     tRegisterWindow();
+    tCreateWindow();
 }

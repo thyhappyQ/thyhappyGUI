@@ -10,7 +10,7 @@ HWND hwnd = NULL;
 int width = DEFAULT_M_W_W;
 int height = 0;
 
-BOOL tmInitialized = false;
+BOOL tmInitialized = FALSE;
 
 LRESULT CALLBACK mWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
@@ -77,7 +77,7 @@ DLL void thyhappyMenuInitialize() {
     tmCreateWindow();
     tmShowWindow();
 
-    tmInitialized = true;
+    tmInitialized = TRUE;
 }
 
 DLL void thyhappyMenuRegister() {

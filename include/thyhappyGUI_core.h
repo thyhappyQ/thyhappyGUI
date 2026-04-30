@@ -15,9 +15,7 @@ DLL BOOL thyhappyWindowShouldClose();
 DLL void thyhappyCleanUp();
 
 // Call a message window to show error
-// Because I plan to public this function only for developer now,
-// so I do not export it in DLL
-void thyhappyError(const char* content);
+DLL void thyhappyError(const char* content);
 
 // Get main window HWND
 DLL HWND thyhappyGetHWND();

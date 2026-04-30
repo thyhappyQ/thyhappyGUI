@@ -5,6 +5,8 @@
 #include "../include/thyhappyGUI_menu.h"
 #include "../include/thyhappyGUI_render.h"
 
+// This file is created to help me debug
+
 int main() {
     const float a[4] = {0.0f,0.0f,0.2f,1.0f};
 
@@ -13,7 +15,7 @@ int main() {
     thyhappySetWidth(1000);
     thyhappySetBackgroundColor(a);
 
-    thyhappyMenuSetBlockDistance(50);
+    thyhappyMenuSetBlockDistance(10);
     thyhappyMenuSetEdgeDistance(10);
 
     thyhappyInitialize();

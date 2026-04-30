@@ -91,7 +91,7 @@ void static tCreateWindow() {
     Hwnd = CreateWindow(
         "ThyhappyGUi",
         wTitle,
-        WS_OVERLAPPEDWINDOW,
+        WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
         wX,
         wY,
         wWidth,

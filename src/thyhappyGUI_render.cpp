@@ -52,11 +52,11 @@ namespace thyhappy {
     }
 }
 
-extern "C" DLL inline void thyhappyRenderInitialize() {
+extern "C" DLL void thyhappyRenderInitialize() {
     thyhappy::init::initialize();
 }
 
-extern "C" DLL inline void thyhappyRenderDraw() {
+extern "C" DLL void thyhappyRenderDraw() {
     thyhappy::mrt->BeginDraw();
     {
         // Real render code

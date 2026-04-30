@@ -25,19 +25,19 @@ int wY = DEFAULT_WINDOW_POS;
 
 MSG msg = {0};
 
-DLL inline void thyhappySetTitle(const char* title) {
+DLL void thyhappySetTitle(const char* title) {
     wTitle = title == NULL ? "" : title;
 }
 
-DLL inline void thyhappySetWidth(const int width) {
+DLL void thyhappySetWidth(const int width) {
     wWidth = width;
 }
 
-DLL inline void thyhappySetHeight(const int height) {
+DLL void thyhappySetHeight(const int height) {
     wHeight = height;
 }
 
-DLL inline void thyhappySetPosition(const int x, const int y) {
+DLL void thyhappySetPosition(const int x, const int y) {
     wX = x < 0 ? 0 : x;
     wY = y < 0 ? 0 : y;
 }
@@ -60,7 +60,7 @@ void thyhappyError(const char* content) {
     MessageBox(NULL, content, "Error", MB_OK | MB_ICONERROR);
 }
 
-DLL inline void thyhappySetBackgroundColor(const float color[4]) {
+DLL void thyhappySetBackgroundColor(const float color[4]) {
     wBkColor[0] = color[0];
     wBkColor[1] = color[1];
     wBkColor[2] = color[2];
@@ -83,7 +83,7 @@ void static tRegisterWindow() {
     }
 }
 
-DLL inline HWND thyhappyGetHWND() {
+DLL HWND thyhappyGetHWND() {
     return Hwnd;
 }
 
@@ -114,7 +114,7 @@ void static tShowWindow() {
     UpdateWindow(Hwnd);
 }
 
-DLL inline void thyhappyInitialize() {
+DLL void thyhappyInitialize() {
     /* Implement core initialize function */
 
     // Init window
@@ -131,7 +131,7 @@ void static tDoWithInput() {
     DispatchMessage(&msg);
 }
 
-DLL inline BOOL thyhappyWindowShouldClose() {
+DLL BOOL thyhappyWindowShouldClose() {
     // Get message
     PeekMessage(&msg,NULL,0,0,PM_REMOVE);
     if (msg.message == WM_QUIT) {
@@ -149,6 +149,6 @@ DLL inline BOOL thyhappyWindowShouldClose() {
     return FALSE;
 }
 
-DLL inline void thyhappyCleanUp() {
+DLL void thyhappyCleanUp() {
 
 }

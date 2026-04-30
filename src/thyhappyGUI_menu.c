@@ -70,16 +70,16 @@ void static tmShowWindow() {
     UpdateWindow(hwnd);
 }
 
-DLL inline void thyhappyMenuInitialize() {
+DLL void thyhappyMenuInitialize() {
     tmRegisterWindow();
     tmCreateWindow();
     tmShowWindow();
 }
 
-DLL inline void thyhappyMenuRegister() {
+DLL void thyhappyMenuRegister() {
     if (TRUE){}
 }
 
-DLL inline void thyhappyMenuCleanUp() {
+DLL void thyhappyMenuCleanUp() {
     if (TRUE){}
 }

@@ -3,7 +3,7 @@
 //
 
 #include "../include/thyhappyGUI_core.h"
-
+#include "../include/thyhappyGUI_menu.h"
 #include "../include/thyhappyGUI_render.h"
 
 HWND Hwnd = NULL;
@@ -150,5 +150,7 @@ DLL BOOL thyhappyWindowShouldClose() {
 }
 
 DLL void thyhappyCleanUp() {
-
+    if (tmInitialized == TRUE) {
+        thyhappyMenuCleanUp();
+    }
 }

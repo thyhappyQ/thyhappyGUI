@@ -30,7 +30,15 @@ void static tRegisterWindow() {
     }
 }
 
-void thyhappyInitialize() {
+DLL inline HWND thyhappyGetHWND() {
+    return Hwnd;
+}
+
+void static tCreateWindow() {
+
+}
+
+DLL inline void thyhappyInitialize() {
     /* Implement core initialize function */
 
     tRegisterWindow();

@@ -74,7 +74,8 @@ void static tReadMenuConfig() {
 }
 
 DLL void thyhappyConfigInitialize() {
-
+    tReadWindowConfig();
+    tReadMenuConfig();
 }
 
 DLL bool thyhappyConfigWindowShouldClose() {

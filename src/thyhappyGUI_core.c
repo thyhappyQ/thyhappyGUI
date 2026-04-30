@@ -87,9 +87,16 @@ void static tCreateWindow() {
     }
 }
 
+void static tShowWindow() {
+    // Show window
+    ShowWindow(Hwnd,SW_SHOW);
+    UpdateWindow(Hwnd);
+}
+
 DLL inline void thyhappyInitialize() {
     /* Implement core initialize function */
 
     tRegisterWindow();
     tCreateWindow();
+    tShowWindow();
 }

@@ -4,7 +4,7 @@ project(thyhappyGUI C CXX)
 set(CMAKE_C_STANDARD 23)
 
 add_executable(main src/main.c)
-add_library(dll SHARED src/thyhappyGUI_core.c src/thyhappyGUI_render.cpp src/thyhappyGUI_menu.c)
+add_library(dll SHARED src/thyhappyGUI_core.c src/thyhappyGUI_render.cpp src/thyhappyGUI_menu.c src/thyhappyGUI_config.c)
 
 target_compile_definitions(dll PRIVATE THYHAPPYGUI_EXPORTS)
 

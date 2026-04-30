@@ -120,6 +120,8 @@ namespace thyhappy {
             if (tmRegistered == TRUE) {
                 mbrt->BeginDraw();
 
+                drawBk();
+
                 // If menu has at least one menu block
                 drawMenuBlock();
 

@@ -1,7 +1,6 @@
 //
 // Created by busil on 2026/4/30.
 //
-
 #include "../include/thyhappyGUI_menu.h"
 
 HWND hwnd = NULL;
@@ -78,9 +77,9 @@ DLL inline void thyhappyMenuInitialize() {
 }
 
 DLL inline void thyhappyMenuRegister() {
-
+    if (TRUE){}
 }
 
 DLL inline void thyhappyMenuCleanUp() {
-
+    if (TRUE){}
 }

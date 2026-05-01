@@ -31,6 +31,13 @@ float mbBkColor[4] = {0.3f, 0.3f, 0.4f, 0.5f};
 
 void (*afterRgsCallback)()=NULL;
 
+void thyhappyMenuSetMbFontColr(const float mbFontColr[4]) {
+    mbFtColor[0] = mbFontColr[0];
+    mbFtColor[1] = mbFontColr[1];
+    mbFtColor[2] = mbFontColr[2];
+    mbBkColor[3] = mbFontColr[3];
+}
+
 LRESULT CALLBACK mWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
         case WM_CLOSE:

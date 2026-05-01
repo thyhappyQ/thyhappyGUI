@@ -34,6 +34,7 @@ extern size_t step;
 
 extern float mbkColor[4];
 extern float mbBkColor[4];
+extern float mbFtColor[4]; // Font color
 
 extern void(*afterRgsCallback)();
 
@@ -49,6 +50,7 @@ DLL void thyhappyMenuSetBlockDistance(unsigned int blockDistance);
 DLL void thyhappyMenuSetBkColor(const float color[4]);
 DLL void thyhappyMenuSetMbBkColor(const float mbBkColor[4]);
 DLL void thyhappyMenuSetWidth(int new_width);
+DLL void thyhappyMenuSetMbFontColr(const float mbFontColr[4]);
 
 #ifdef __cplusplus
 }

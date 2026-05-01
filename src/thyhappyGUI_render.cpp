@@ -122,7 +122,7 @@ namespace thyhappy {
         }
 
         void initTitleBrush() {
-            mrt->CreateSolidColorBrush(
+            mbrt->CreateSolidColorBrush(
                 D2D1::ColorF(mbFtColor[0],mbFtColor[1],mbFtColor[2],mbFtColor[3]),
                 &titleBrush
                 );
@@ -132,6 +132,7 @@ namespace thyhappy {
         }
 
         void initBrush() {
+            initMbBrush();
             initTitleBrush();
         }
 
@@ -158,7 +159,6 @@ namespace thyhappy {
                 reinterpret_cast<IUnknown **>(&titleFactory));
             if (!titleFactory) {
                 thyhappyError("Failed to create title factory");
-                return;
             }
         }
 
@@ -179,7 +179,6 @@ namespace thyhappy {
 
             createFactory();
             createHwndRenderTarget();
-            initBrush();
         }
     }
 
@@ -223,7 +222,7 @@ namespace thyhappy {
                     wmbArr[i].title.c_str(),
                     wmbArr[i].title.size(),
                     titleFormat,
-                    wmbArr[0].pos,
+                    wmbArr[i].pos,
                     titleBrush
                    );
             }
@@ -252,7 +251,7 @@ extern "C" DLL void thyhappyRenderInitialize() {
 
 extern "C" DLL void thyhappyRenderMenuInitialize() {
     thyhappy::init::createMenuHwndRenderTarget();
-    thyhappy::init::initMbBrush();
+    thyhappy::init::initBrush();
 }
 
 extern "C" DLL void thyhappyRenderDraw() {

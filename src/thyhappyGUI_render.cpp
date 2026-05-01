@@ -21,7 +21,7 @@ namespace thyhappy {
     struct newMb {
         std::wstring title = {};
         void(*callback)() = nullptr;
-        float pos[3] = {};
+        D2D1_RECT_F pos = {};
     };
 
     std::vector<newMb> wmbArr = {};
@@ -109,9 +109,7 @@ namespace thyhappy {
                 }
 
                 wmbArr[i].callback = mbArr[i].block.callback;
-                wmbArr[i].pos[0] = mbArr[i].pos[0];
-                wmbArr[i].pos[1] = mbArr[i].pos[1];
-                wmbArr[i].pos[2] = mbArr[i].pos[2];
+                wmbArr[i].pos = D2D1::Rect(static_cast<float>(egDstc),mbArr[i].pos[0],mbArr[i].pos[1],mbArr[i].pos[2]);
                 const std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
                 wmbArr[i].title = bf;
             }
@@ -159,7 +157,7 @@ namespace thyhappy {
             for (unsigned int i = 0; i < step; i++) {
                 mbrt->FillRoundedRectangle(
                    D2D1::RoundedRect(
-                       D2D1::Rect(static_cast<float>(egDstc),wmbArr[i].pos[0],wmbArr[i].pos[1],wmbArr[i].pos[2]),
+                       wmbArr[i].pos,
                        10.0f,
                        10.0f
                        ),
@@ -169,7 +167,9 @@ namespace thyhappy {
         }
 
         void drawMenuTitle() {
-            //mbrt->DrawText
+            mbrt->DrawTextA(
+
+                );
         }
 
         void drawMenu() {

@@ -36,6 +36,8 @@ extern float mbkColor[4];
 extern float mbBkColor[4];
 extern float mbFtColor[4]; // Font color
 
+extern unsigned int blockSize[2];
+
 extern void(*afterRgsCallback)();
 
 DLL void thyhappyMenuInitialize();

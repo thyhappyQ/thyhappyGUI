@@ -29,6 +29,8 @@ unsigned int blDstc = 0;
 float mbkColor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
 float mbBkColor[4] = {0.3f, 0.3f, 0.4f, 0.5f};
 
+float mbFtColor[4] = {1.0f, 1.0f, 1.0f, 1.0f};
+
 void (*afterRgsCallback)()=NULL;
 
 void thyhappyMenuSetMbFontColr(const float mbFontColr[4]) {
@@ -198,4 +200,5 @@ DLL HWND thyhappyMenuGetHWND() {
 }
 
 DLL void thyhappyMenuCleanUp() {
+    free(mbArr);
 }

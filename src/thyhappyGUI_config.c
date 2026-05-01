@@ -82,7 +82,7 @@ void static tReadMenuConfig() {
 
     thyhappyMenuSetBkColor(menuBkColor);
     thyhappyMenuSetMbBkColor(menuBlockBkColor);
-    thyhappyMenuSetMbFontColr(menuBlockFontColor)
+    thyhappyMenuSetMbFontColr(menuBlockFontColor);
 }
 
 DLL void thyhappyConfigInitialize() {

@@ -5,11 +5,13 @@
 #include "../include/thyhappyGUI_render.h"
 #include "../include/thyhappyGUI_menu.h"
 #include <d2d1.h>
+#include <dwrite.h>
 
 #include <string>
 #include <vector>
 
 #pragma comment(lib, "d2d1")
+#pragma comment(lib, "dwrite")
 
 namespace thyhappy {
     ID2D1Factory* mf = nullptr; // Main factory
@@ -25,6 +27,10 @@ namespace thyhappy {
     };
 
     std::vector<newMb> wmbArr = {};
+
+    IDWriteFactory* titleFactory = nullptr;
+    IDWriteTextFormat* titleFormat = nullptr;
+    ID2D1SolidColorBrush* titleBrush = nullptr;
 
     namespace init {
         void createMainFactory(){
@@ -113,20 +119,65 @@ namespace thyhappy {
                 const std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
                 wmbArr[i].title = bf;
             }
+        }
 
-            // Now the old mb array can be destroyed
-            free(mbArr);
+        void initTitleBrush() {
+            mrt->CreateSolidColorBrush(
+                D2D1::ColorF(mbFtColor[0],mbFtColor[1],mbFtColor[2],mbFtColor[3]),
+                &titleBrush
+                );
+            if (!titleBrush) {
+                thyhappyError("Failed to create title brush");
+            }
         }
 
         void initBrush() {
+            initTitleBrush();
+        }
+
+        void createTitleFormat() {
+            titleFactory->CreateTextFormat(
+                L"Arial",
+                nullptr,
+                DWRITE_FONT_WEIGHT_NORMAL,
+                DWRITE_FONT_STYLE_NORMAL,
+                DWRITE_FONT_STRETCH_NORMAL,
+                static_cast<float>(blockSize[1]),
+                L"zh-CN",
+                &titleFormat
+                );
+            if (!titleFormat) {
+                thyhappyError("Failed to create title format");
+            }
+        }
+
+        void createTitleFactory() {
+            DWriteCreateFactory(
+                DWRITE_FACTORY_TYPE_SHARED,
+                __uuidof(IDWriteFactory),
+                reinterpret_cast<IUnknown **>(&titleFactory));
+            if (!titleFactory) {
+                thyhappyError("Failed to create title factory");
+                return;
+            }
+        }
+
+        void createFactory() {
+            createMainFactory();
+            createTitleFactory();
+        }
+
+        void afterRegisterCallback() {
+            turnAllMbTitleToWideStr();
+            createTitleFormat();
         }
 
         void initialize() {
             // Because if we call "turnAll" function here,it's too early,menu block array is not ready
             // So we make a callback,wait for its over
-            afterRgsCallback = turnAllMbTitleToWideStr;
+            afterRgsCallback = afterRegisterCallback;
 
-            createMainFactory();
+            createFactory();
             createHwndRenderTarget();
             initBrush();
         }
@@ -167,9 +218,15 @@ namespace thyhappy {
         }
 
         void drawMenuTitle() {
-            mbrt->DrawTextA(
-
-                );
+            for (unsigned int i = 0; i < step; i++) {
+                mbrt->DrawTextA(
+                    wmbArr[i].title.c_str(),
+                    wmbArr[i].title.size(),
+                    titleFormat,
+                    wmbArr[0].pos,
+                    titleBrush
+                   );
+            }
         }
 
         void drawMenu() {
@@ -180,6 +237,8 @@ namespace thyhappy {
 
                 // If menu has at least one menu block
                 drawMenuBlock();
+
+                drawMenuTitle();
 
                 mbrt->EndDraw();
             }

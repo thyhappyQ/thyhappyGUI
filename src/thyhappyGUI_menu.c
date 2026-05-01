@@ -145,7 +145,8 @@ DLL void thyhappyMenuRegister(const thyhappyMenuBlock block) {
             // Work out the height
             // Default height of the menu block is the 1/10 of window height
             if (height > 2 * egDstc) {
-                blockSize[1] = height / 10;;
+                blockSize[1] = height / 10;
+                mbFontSize = (float)blockSize[1];
             }
         }
     }

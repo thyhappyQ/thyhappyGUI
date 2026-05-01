@@ -71,16 +71,10 @@ void static tReadMenuConfig() {
     thyhappyMenuSetBlockDistance(yyjson_get_int(yyjson_obj_get(root,M_BLDSTC_KEY)));
 
     // Read array
-    yyjson_val* mbclArr = yyjson_obj_get(root,M_BKCOLOR_KEY);
-    yyjson_val* mbbkArr = yyjson_obj_get(root,M_MKBKCOLOR_KEY);
     float abuffer[4] = {0};
     float bbuffer[4] = {0};
     tEzReadCol(root,M_BKCOLOR_KEY,abuffer);
     tEzReadCol(root,M_MKBKCOLOR_KEY,bbuffer);
-    /*for (size_t i = 0; i < yyjson_arr_size(mbclArr); i++) {
-        abuffer[i] = (float)yyjson_get_num(yyjson_arr_get(mbclArr,i));
-        bbuffer[i] = (float)yyjson_get_num(yyjson_arr_get(mbbkArr,i));
-    }*/
     thyhappyMenuSetBkColor(abuffer);
     thyhappyMenuSetMbBkColor(bbuffer);
 }

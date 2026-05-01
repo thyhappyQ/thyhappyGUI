@@ -131,6 +131,8 @@ void static tDoWithInput() {
     DispatchMessage(&msg);
 }
 
+BOOL first = TRUE;
+
 DLL BOOL thyhappyWindowShouldClose() {
     // Get message
     while(PeekMessage(&msg,NULL,0,0,PM_REMOVE)) {
@@ -139,6 +141,13 @@ DLL BOOL thyhappyWindowShouldClose() {
         }
 
         tDoWithInput();
+    }
+
+    // If it's the first running
+    // Call back
+    if (first){
+        afterRgsCallback();
+        first = FALSE;
     }
 
     // Because this function will be called every tick

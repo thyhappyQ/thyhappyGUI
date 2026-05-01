@@ -35,6 +35,8 @@ extern size_t step;
 extern float mbkColor[4];
 extern float mbBkColor[4];
 
+extern void(*afterRgsCallback)();
+
 DLL void thyhappyMenuInitialize();
 DLL void thyhappyMenuRegister(thyhappyMenuBlock block);
 DLL void thyhappyMenuCleanUp();

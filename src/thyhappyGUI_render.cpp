@@ -112,7 +112,7 @@ namespace thyhappy {
                 wmbArr[i].pos[0] = mbArr[i].pos[0];
                 wmbArr[i].pos[1] = mbArr[i].pos[1];
                 wmbArr[i].pos[2] = mbArr[i].pos[2];
-                std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
+                const std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
                 wmbArr[i].title = bf;
             }
 
@@ -124,7 +124,10 @@ namespace thyhappy {
         }
 
         void initialize() {
-            turnAllMbTitleToWideStr();
+            // Because if we call "turnAll" function here,it's too early,menu block array is not ready
+            // So we make a callback,wait for its over
+            afterRgsCallback = turnAllMbTitleToWideStr;
+
             createMainFactory();
             createHwndRenderTarget();
             initBrush();

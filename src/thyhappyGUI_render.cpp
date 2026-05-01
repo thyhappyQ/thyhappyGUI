@@ -7,6 +7,7 @@
 #include <d2d1.h>
 
 #include <string>
+#include <vector>
 
 #pragma comment(lib, "d2d1")
 
@@ -22,6 +23,8 @@ namespace thyhappy {
         void(*callback)();
         float pos[3];
     };
+
+    std::vector<newMb> wmbArr;
 
     namespace init {
         void createMainFactory(){
@@ -94,6 +97,24 @@ namespace thyhappy {
             result.resize(len - 1);
 
             return result;
+        }
+
+        void turnAllMbTitleToWideStr() {
+            wmbArr.reserve(step);
+            for (size_t i = 0; i < step; i++) {
+
+                // If meet with null,finish the loop
+                if (mbArr[i].block.name == nullptr) {
+                    break;
+                }
+
+                wmbArr[i].callback = mbArr[i].block.callback;
+                wmbArr[i].pos[0] = mbArr[i].pos[0];
+                wmbArr[i].pos[1] = mbArr[i].pos[1];
+                wmbArr[i].pos[2] = mbArr[i].pos[2];
+                std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
+                wmbArr[i].title = bf.c_str();
+            }
         }
 
         void initBrush() {

@@ -19,12 +19,12 @@ namespace thyhappy {
     ID2D1SolidColorBrush* mbBrush = nullptr;
 
     struct newMb {
-        const wchar_t* title;
-        void(*callback)();
-        float pos[3];
+        std::wstring title = {};
+        void(*callback)() = nullptr;
+        float pos[3] = {};
     };
 
-    std::vector<newMb> wmbArr;
+    std::vector<newMb> wmbArr = {};
 
     namespace init {
         void createMainFactory(){
@@ -100,7 +100,7 @@ namespace thyhappy {
         }
 
         void turnAllMbTitleToWideStr() {
-            wmbArr.reserve(step);
+            wmbArr.resize(step);
             for (size_t i = 0; i < step; i++) {
 
                 // If meet with null,finish the loop
@@ -113,7 +113,7 @@ namespace thyhappy {
                 wmbArr[i].pos[1] = mbArr[i].pos[1];
                 wmbArr[i].pos[2] = mbArr[i].pos[2];
                 std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
-                wmbArr[i].title = bf.c_str();
+                wmbArr[i].title = bf;
             }
 
             // Now the old mb array can be destroyed

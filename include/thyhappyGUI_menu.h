@@ -14,7 +14,7 @@ extern "C" {
 
 struct _thyhappyMenuBlock {
     const char* name;
-    const void(*callback)(); // When use press this block,program will give a callback
+    void(*callback)(); // When use press this block,program will give a callback
 };
 
 typedef struct _thyhappyMenuBlock thyhappyMenuBlock;

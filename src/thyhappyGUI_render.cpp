@@ -6,6 +6,8 @@
 #include "../include/thyhappyGUI_menu.h"
 #include <d2d1.h>
 
+#include <string>
+
 #pragma comment(lib, "d2d1")
 
 namespace thyhappy {
@@ -14,6 +16,12 @@ namespace thyhappy {
     ID2D1HwndRenderTarget* mbrt = nullptr; // Menu block render target
 
     ID2D1SolidColorBrush* mbBrush = nullptr;
+
+    struct newMb {
+        const wchar_t* title;
+        void(*callback)();
+        float pos[3];
+    };
 
     namespace init {
         void createMainFactory(){
@@ -72,6 +80,22 @@ namespace thyhappy {
             }
         }
 
+        std::wstring multiStrToWideStr(const char* source) {
+            // Work out the size we need
+            const int len = MultiByteToWideChar(CP_ACP, 0, source, -1, nullptr, 0);
+
+            // Alloc memory
+            std::wstring result(len, L'\0');
+
+            // Change
+            MultiByteToWideChar(CP_ACP, 0, source, -1,  &result[0], len);
+
+            // Remove the null sign at the end
+            result.resize(len - 1);
+
+            return result;
+        }
+
         void initBrush() {
         }
 
@@ -114,6 +138,10 @@ namespace thyhappy {
                        mbBrush
                    );
             }
+        }
+
+        void drawMenuTitle() {
+            //mbrt->DrawText
         }
 
         void drawMenu() {

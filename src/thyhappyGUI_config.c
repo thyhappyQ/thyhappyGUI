@@ -19,6 +19,7 @@
 #define M_MKBKCOLOR_KEY "mbbkcolor"
 #define M_EGDSTC_KEY "egdstc" // Edge distance
 #define M_BLDSTC_KEY "bldstc" // Block distance
+#define M_MBFONTCOLOR_KEY "fontcolor"
 
 yyjson_doc* wDoc = NULL;
 yyjson_doc* mDoc = NULL;
@@ -73,10 +74,15 @@ void static tReadMenuConfig() {
     // Read array
     float menuBkColor[4] = {0};
     float menuBlockBkColor[4] = {0};
+    float menuBlockFontColor[4] = {0};
+
     tEzReadCol(root,M_BKCOLOR_KEY,menuBkColor);
     tEzReadCol(root,M_MKBKCOLOR_KEY,menuBlockBkColor);
+    tEzReadCol(root,M_MBFONTCOLOR_KEY,menuBlockFontColor);
+
     thyhappyMenuSetBkColor(menuBkColor);
     thyhappyMenuSetMbBkColor(menuBlockBkColor);
+    thyhappyMenuSetMbFontColr(menuBlockFontColor)
 }
 
 DLL void thyhappyConfigInitialize() {

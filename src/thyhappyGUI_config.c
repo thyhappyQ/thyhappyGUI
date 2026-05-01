@@ -23,6 +23,16 @@
 yyjson_doc* wDoc = NULL;
 yyjson_doc* mDoc = NULL;
 
+void static tEzReadCol(yyjson_val* root,const char* key,float* tarr) {
+    // This function helps me read the color array easily
+
+    yyjson_val* colArr = yyjson_obj_get(root,key);
+
+    for (unsigned int i = 0; i < yyjson_arr_size(colArr); i++) {
+        tarr[i] = (float)yyjson_get_num(yyjson_arr_get(colArr,i));
+    }
+}
+
 void static tReadWindowConfig() {
     wDoc = yyjson_read_file(DEFAULT_WINDOW_CONFIG_PATH,0,NULL,NULL);
     if (!wDoc) {
@@ -65,10 +75,12 @@ void static tReadMenuConfig() {
     yyjson_val* mbbkArr = yyjson_obj_get(root,M_MKBKCOLOR_KEY);
     float abuffer[4] = {0};
     float bbuffer[4] = {0};
-    for (size_t i = 0; i < yyjson_arr_size(mbclArr); i++) {
+    tEzReadCol(root,M_BKCOLOR_KEY,abuffer);
+    tEzReadCol(root,M_MKBKCOLOR_KEY,bbuffer);
+    /*for (size_t i = 0; i < yyjson_arr_size(mbclArr); i++) {
         abuffer[i] = (float)yyjson_get_num(yyjson_arr_get(mbclArr,i));
         bbuffer[i] = (float)yyjson_get_num(yyjson_arr_get(mbbkArr,i));
-    }
+    }*/
     thyhappyMenuSetBkColor(abuffer);
     thyhappyMenuSetMbBkColor(bbuffer);
 }

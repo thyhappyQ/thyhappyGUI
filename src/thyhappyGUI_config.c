@@ -71,12 +71,12 @@ void static tReadMenuConfig() {
     thyhappyMenuSetBlockDistance(yyjson_get_int(yyjson_obj_get(root,M_BLDSTC_KEY)));
 
     // Read array
-    float abuffer[4] = {0};
-    float bbuffer[4] = {0};
-    tEzReadCol(root,M_BKCOLOR_KEY,abuffer);
-    tEzReadCol(root,M_MKBKCOLOR_KEY,bbuffer);
-    thyhappyMenuSetBkColor(abuffer);
-    thyhappyMenuSetMbBkColor(bbuffer);
+    float menuBkColor[4] = {0};
+    float menuBlockBkColor[4] = {0};
+    tEzReadCol(root,M_BKCOLOR_KEY,menuBkColor);
+    tEzReadCol(root,M_MKBKCOLOR_KEY,menuBlockBkColor);
+    thyhappyMenuSetBkColor(menuBkColor);
+    thyhappyMenuSetMbBkColor(menuBlockBkColor);
 }
 
 DLL void thyhappyConfigInitialize() {

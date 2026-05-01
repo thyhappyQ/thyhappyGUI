@@ -189,5 +189,4 @@ DLL HWND thyhappyMenuGetHWND() {
 }
 
 DLL void thyhappyMenuCleanUp() {
-    free(mbArr);
 }

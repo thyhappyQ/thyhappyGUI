@@ -115,12 +115,16 @@ namespace thyhappy {
                 std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
                 wmbArr[i].title = bf.c_str();
             }
+
+            // Now the old mb array can be destroyed
+            free(mbArr);
         }
 
         void initBrush() {
         }
 
         void initialize() {
+            turnAllMbTitleToWideStr();
             createMainFactory();
             createHwndRenderTarget();
             initBrush();
@@ -152,7 +156,7 @@ namespace thyhappy {
             for (unsigned int i = 0; i < step; i++) {
                 mbrt->FillRoundedRectangle(
                    D2D1::RoundedRect(
-                       D2D1::Rect(static_cast<float>(egDstc),mbArr[i].pos[0],mbArr[i].pos[1],mbArr[i].pos[2]),
+                       D2D1::Rect(static_cast<float>(egDstc),wmbArr[i].pos[0],wmbArr[i].pos[1],wmbArr[i].pos[2]),
                        10.0f,
                        10.0f
                        ),

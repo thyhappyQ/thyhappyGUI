@@ -28,6 +28,7 @@ DLL void thyhappySetPosition(int x, int y);
 DLL void thyhappySetBackgroundColor(const float color[4]);
 
 // Functions for user
+// Here are nothing at the moment
 
 // Public global variables
 extern int wWidth;

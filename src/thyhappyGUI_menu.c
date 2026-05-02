@@ -36,11 +36,15 @@ float mbFontDstc = 5.0f;
 
 void (*afterRgsCallback)()=NULL;
 
-void thyhappyMenuSetMbFontColr(const float mbFontColr[4]) {
+DLL void thyhappyMenuSetMbFontColr(const float mbFontColr[4]) {
     mbFtColor[0] = mbFontColr[0];
     mbFtColor[1] = mbFontColr[1];
     mbFtColor[2] = mbFontColr[2];
     mbFtColor[3] = mbFontColr[3];
+}
+
+DLL void thyhappyMenuSetMbFontDstc(const float new_font_dstc) {
+    mbFontDstc = new_font_dstc;
 }
 
 LRESULT CALLBACK mWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {

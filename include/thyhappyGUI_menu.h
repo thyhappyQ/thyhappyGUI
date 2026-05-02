@@ -56,6 +56,7 @@ DLL void thyhappyMenuSetBkColor(const float color[4]);
 DLL void thyhappyMenuSetMbBkColor(const float mbBkColor[4]);
 DLL void thyhappyMenuSetWidth(int new_width);
 DLL void thyhappyMenuSetMbFontColr(const float mbFontColr[4]);
+DLL void thyhappyMenuSetMbFontDstc(float new_font_dstc);
 
 #ifdef __cplusplus
 }

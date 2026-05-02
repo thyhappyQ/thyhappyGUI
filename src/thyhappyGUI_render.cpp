@@ -233,12 +233,6 @@ namespace thyhappy {
         }
 
         void drawMenuTitle() {
-            ID2D1SolidColorBrush* b = nullptr;
-            mbrt->CreateSolidColorBrush(D2D1::ColorF(0.0f,1.0f,0.0f,0.5f),&b);
-            if (!b) {
-                thyhappyError("Failed to create brush");
-                return;
-            }
             for (unsigned int i = 0; i < step; i++) {
                 mbrt->DrawTextA(
                     wmbArr[i].title.c_str(),
@@ -247,7 +241,6 @@ namespace thyhappy {
                     wmbArr[i].fontPos,
                     titleBrush
                    );
-                mbrt->FillRectangle(wmbArr[i].fontPos,b);
             }
         }
 

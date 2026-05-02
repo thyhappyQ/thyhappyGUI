@@ -57,6 +57,26 @@ LRESULT CALLBACK mWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             PostQuitMessage(0);
             return 0;
 
+        case WM_LBUTTONDOWN:
+            // If click one the menu blocks,call it back
+
+            // Get screen position
+            POINT cursorPos;
+            GetCursorPos(&cursorPos);
+            ScreenToClient(hwnd, &cursorPos);
+
+            // Turn screen position to client position
+            const int x = cursorPos.x;
+            const int y = cursorPos.y;
+
+            for (size_t i = 0; i < step; i++) {
+                if (x >= egDstc && (float)x <= mbArr[i].pos[1] && (float)y >= mbArr[i].pos[0] && (float)y <= mbArr[i].pos[2]) {
+                    mbArr[i].block.callback();
+                }
+            }
+
+            return 0;
+
         default:return DefWindowProc(hwnd, msg, wParam, lParam);
     }
 }

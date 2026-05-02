@@ -24,6 +24,7 @@ namespace thyhappy {
         std::wstring title = {};
         void(*callback)() = nullptr;
         D2D1_RECT_F pos = {};
+        D2D1_RECT_F fontPos = {};
     };
 
     std::vector<newMb> wmbArr = {};
@@ -105,8 +106,10 @@ namespace thyhappy {
             return result;
         }
 
-        void turnAllMbTitleToWideStr() {
+        void initNewWideMenuBlockArray() {
             wmbArr.resize(step);
+            const float c = (static_cast<float>(blockSize[1]) - mbFontSize)/2;
+            constexpr float some_value = 5; // This block pos will sub this value to make them seemed more close to center
             for (size_t i = 0; i < step; i++) {
 
                 // If meet with null,finish the loop
@@ -114,10 +117,23 @@ namespace thyhappy {
                     break;
                 }
 
-                wmbArr[i].callback = mbArr[i].block.callback;
-                wmbArr[i].pos = D2D1::Rect(static_cast<float>(egDstc),mbArr[i].pos[0],mbArr[i].pos[1],mbArr[i].pos[2]);
-                const std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
-                wmbArr[i].title = bf;
+                {
+                    // Init
+                    wmbArr[i].callback = mbArr[i].block.callback;
+                    wmbArr[i].pos = D2D1::Rect(static_cast<float>(egDstc),mbArr[i].pos[0],mbArr[i].pos[1],mbArr[i].pos[2]);
+                    const std::wstring bf = multiStrToWideStr(mbArr[i].block.name);
+                    wmbArr[i].title = bf;
+
+                    const float a =  wmbArr[i].pos.top + static_cast<float>(blockSize[1]) - c - some_value;// This is bottom
+                    const float b = a - mbFontSize; // This is top
+
+                    wmbArr[i].fontPos = D2D1::RectF(
+                        wmbArr[i].pos.left+mbFontDstc,
+                        b,
+                        wmbArr[i].pos.right-mbFontDstc,
+                        a
+                        );
+                }
             }
         }
 
@@ -143,7 +159,7 @@ namespace thyhappy {
                 DWRITE_FONT_WEIGHT_NORMAL,
                 DWRITE_FONT_STYLE_NORMAL,
                 DWRITE_FONT_STRETCH_NORMAL,
-                static_cast<float>(blockSize[1]),
+                mbFontSize,
                 L"zh-CN",
                 &titleFormat
                 );
@@ -168,7 +184,7 @@ namespace thyhappy {
         }
 
         void afterRegisterCallback() {
-            turnAllMbTitleToWideStr();
+            initNewWideMenuBlockArray();
             createTitleFormat();
         }
 
@@ -217,14 +233,21 @@ namespace thyhappy {
         }
 
         void drawMenuTitle() {
+            ID2D1SolidColorBrush* b = nullptr;
+            mbrt->CreateSolidColorBrush(D2D1::ColorF(0.0f,1.0f,0.0f,0.5f),&b);
+            if (!b) {
+                thyhappyError("Failed to create brush");
+                return;
+            }
             for (unsigned int i = 0; i < step; i++) {
                 mbrt->DrawTextA(
                     wmbArr[i].title.c_str(),
                     wmbArr[i].title.size(),
                     titleFormat,
-                    wmbArr[i].pos,
+                    wmbArr[i].fontPos,
                     titleBrush
                    );
+                mbrt->FillRectangle(wmbArr[i].fontPos,b);
             }
         }
 

@@ -11,8 +11,10 @@ int main() {
     thyhappyConfigInitialize();
 
     const thyhappyMenuBlock a = {"aaa",NULL};
+    const thyhappyMenuBlock b = {"bbb",NULL};
 
     thyhappyMenuRegister(a);
+    thyhappyMenuRegister(b);
     while (!thyhappyConfigWindowShouldClose()){}
     thyhappyConfigCleanUp();
 }

@@ -21,6 +21,7 @@
 #define M_BLDSTC_KEY "bldstc" // Block distance
 #define M_MBFONTCOLOR_KEY "fontcolor"
 #define M_MBFONTDSTC_KEY "fontdistance"
+#define M_MBFONTSIZE_KEY "fontsize"
 
 yyjson_doc* wDoc = NULL;
 yyjson_doc* mDoc = NULL;
@@ -72,6 +73,7 @@ void static tReadMenuConfig() {
     thyhappyMenuSetEdgeDistance(yyjson_get_int(yyjson_obj_get(root,M_EGDSTC_KEY)));
     thyhappyMenuSetBlockDistance(yyjson_get_int(yyjson_obj_get(root,M_BLDSTC_KEY)));
     thyhappyMenuSetMbFontDstc((float)yyjson_get_num(yyjson_obj_get(root,M_MBFONTDSTC_KEY)));
+    thyhappyMenuSetMbFontSize((float)(yyjson_get_num(yyjson_obj_get(root,M_MBFONTSIZE_KEY))));
 
     // Read array
     float menuBkColor[4] = {0};

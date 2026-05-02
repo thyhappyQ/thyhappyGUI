@@ -121,6 +121,10 @@ DLL unsigned int* thyhappyMenuGetBlockSize() {
     return blockSize;
 }
 
+DLL void thyhappyMenuSetMbFontSize(const float new_font_size) {
+    mbFontSize = new_font_size;
+}
+
 DLL void thyhappyMenuSetBlockDistance(unsigned int blockDistance) {
     blDstc = blockDistance;
 }

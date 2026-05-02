@@ -10,11 +10,17 @@
 int main() {
     thyhappyConfigInitialize();
 
-    const thyhappyMenuBlock a = {"aaaaaaa",NULL};
-    const thyhappyMenuBlock b = {"bbb",NULL};
+    const thyhappyMenuBlock a = {"AAAAA",NULL};
+    const thyhappyMenuBlock b = {"BBBB",NULL};
+    const thyhappyMenuBlock c = {"CCC",NULL};
+    const thyhappyMenuBlock d = {"DD",NULL};
+    const thyhappyMenuBlock e = {"E",NULL};
 
     thyhappyMenuRegister(a);
     thyhappyMenuRegister(b);
+    thyhappyMenuRegister(c);
+    thyhappyMenuRegister(d);
+    thyhappyMenuRegister(e);
     while (!thyhappyConfigWindowShouldClose()){}
     thyhappyConfigCleanUp();
 }

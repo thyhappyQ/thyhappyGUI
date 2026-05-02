@@ -239,7 +239,8 @@ namespace thyhappy {
                     wmbArr[i].title.size(),
                     titleFormat,
                     wmbArr[i].fontPos,
-                    titleBrush
+                    titleBrush,
+                    D2D1_DRAW_TEXT_OPTIONS_CLIP
                    );
             }
         }

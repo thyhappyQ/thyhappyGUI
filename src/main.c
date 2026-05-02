@@ -10,7 +10,7 @@
 int main() {
     thyhappyConfigInitialize();
 
-    const thyhappyMenuBlock a = {"aaa",NULL};
+    const thyhappyMenuBlock a = {"aaaaaaa",NULL};
     const thyhappyMenuBlock b = {"bbb",NULL};
 
     thyhappyMenuRegister(a);

@@ -32,6 +32,7 @@ float mbBkColor[4] = {0.3f, 0.3f, 0.4f, 0.5f};
 float mbFtColor[4] = {1.0f, 1.0f, 1.0f, 1.0f};
 
 float mbFontSize = 30.0f;
+float mbFontDstc = 5.0f;
 
 void (*afterRgsCallback)()=NULL;
 

@@ -39,6 +39,7 @@ extern float mbFtColor[4]; // Font color
 extern unsigned int blockSize[2];
 
 extern float mbFontSize;
+extern float mbFontDstc;
 
 extern void(*afterRgsCallback)();
 

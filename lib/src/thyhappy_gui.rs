@@ -21,7 +21,7 @@ impl ThyhappyApp {
     }
 
     fn window_event(&mut self, event_loop: &winit::event_loop::ActiveEventLoop,
-                    id:winit::window::WindowId,event:&winit::event::WindowEvent) {
+                    id:winit::window::WindowId,event:winit::event::WindowEvent) {
         // Window messages loop
         match event{
             winit::event::WindowEvent::CloseRequested => {

@@ -6,7 +6,7 @@ struct ThyhappyApp {
     window: Option<winit::window::Window>,
 }
 
-impl ThyhappyApp {
+impl winit::application::ApplicationHandler for ThyhappyApp {
     fn resumed(&mut self, event_loop: &winit::event_loop::ActiveEventLoop) {
         // Check if the window is already created
         if self.window.is_none() {

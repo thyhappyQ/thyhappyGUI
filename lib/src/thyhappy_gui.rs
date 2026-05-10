@@ -2,11 +2,11 @@ use winit;
 use winit::window::WindowAttributes;
 
 #[derive(Default)]
-struct thyhappyApp {
+struct ThyhappyApp {
     window: Option<winit::window::Window>,
 }
 
-impl thyhappyApp {
+impl ThyhappyApp {
     fn resumd(&mut self, event_loop: &winit::event_loop::ActiveEventLoop) {
         // Check if the window is already created
         if self.window.is_none() {
@@ -35,4 +35,7 @@ impl thyhappyApp {
 }
 
 pub fn thyhappy_gui_run() {
+    let event_loop = winit::event_loop::EventLoop::new();
+    let mut app = ThyhappyApp::default();
+    event_loop.unwrap().run_app(&mut app).unwrap()
 }

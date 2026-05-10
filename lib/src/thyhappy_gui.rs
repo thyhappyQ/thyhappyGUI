@@ -1,4 +1,5 @@
 use winit;
+use winit::event_loop::ControlFlow;
 use winit::window::WindowAttributes;
 
 #[derive(Default)]
@@ -41,7 +42,10 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
 }
 
 pub fn thyhappy_gui_run() {
-    let event_loop = winit::event_loop::EventLoop::new();
+    let event_loop = winit::event_loop::EventLoop::new().unwrap();
     let mut app = ThyhappyApp::default();
-    event_loop.unwrap().run_app(&mut app).unwrap()
+
+    event_loop.set_control_flow(ControlFlow::Wait);
+
+    event_loop.run_app(&mut app).unwrap()
 }

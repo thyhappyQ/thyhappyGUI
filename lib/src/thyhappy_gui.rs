@@ -7,7 +7,7 @@ struct ThyhappyApp {
 }
 
 impl ThyhappyApp {
-    fn resumd(&mut self, event_loop: &winit::event_loop::ActiveEventLoop) {
+    fn resumed(&mut self, event_loop: &winit::event_loop::ActiveEventLoop) {
         // Check if the window is already created
         if self.window.is_none() {
             // Create window

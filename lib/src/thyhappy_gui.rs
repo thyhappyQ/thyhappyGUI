@@ -19,6 +19,11 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
                     .unwrap()
             )
         }
+
+        // Request redraw window
+        if let Some(window) = &self.window {
+            window.request_redraw();
+        }
     }
 
     fn window_event(&mut self, event_loop: &winit::event_loop::ActiveEventLoop,

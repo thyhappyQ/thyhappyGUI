@@ -24,8 +24,14 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
                     id:winit::window::WindowId,event:winit::event::WindowEvent) {
         // Window messages loop
         match event{
+            // Do with exiting message
             winit::event::WindowEvent::CloseRequested => {
                 event_loop.exit();
+            }
+
+            // Do with painting message
+            winit::event::WindowEvent::RedrawRequested => {
+
             }
 
             // Default

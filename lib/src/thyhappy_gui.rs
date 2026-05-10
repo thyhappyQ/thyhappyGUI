@@ -34,6 +34,5 @@ impl thyhappyApp {
     }
 }
 
-pub fn thyhappy_gui_initialize() {
-    // Initialize
+pub fn thyhappy_gui_run() {
 }

@@ -8,3 +8,4 @@ path = "src/thyhappy_gui.rs"
 
 [dependencies]
 winit = "0.30.13"
+wgpu = "0.19"

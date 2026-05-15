@@ -1,13 +1,14 @@
-pub mod thyhappy_gui_render;
+//pub mod thyhappy_gui_render;
 
 use winit;
-use winit::event_loop::ControlFlow;
-use winit::window::WindowAttributes;
 
 #[derive(Default)]
 struct ThyhappyApp {
     window: Option<winit::window::Window>,
 }
+
+const DEFAULT_WINDOW_WIDTH: u32 = 800;
+const DEFAULT_WINDOW_HEIGHT: u32 = 800;
 
 impl winit::application::ApplicationHandler for ThyhappyApp {
     fn resumed(&mut self, event_loop: &winit::event_loop::ActiveEventLoop) {
@@ -15,9 +16,10 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
         if self.window.is_none() {
             // Create window
             {
-                let window = WindowAttributes::default()
+                let window = winit::window::Window::default_attributes()
                     .with_title("hello")
-                    .with_visible(true);
+                    .with_visible(true)
+                    .with_inner_size(winit::dpi::LogicalSize::new(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
 
                 self.window = Some(
                     event_loop.create_window(window).unwrap()
@@ -62,7 +64,7 @@ fn run() {
     let event_loop = winit::event_loop::EventLoop::new().unwrap();
     let mut app = ThyhappyApp::default();
 
-    event_loop.set_control_flow(ControlFlow::Poll);
+    event_loop.set_control_flow(winit::event_loop::ControlFlow::Poll);
 
     event_loop.run_app(&mut app).unwrap()
 }

@@ -26,8 +26,8 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
         }
     }
 
-    fn window_event(&mut self, event_loop: &winit::event_loop::ActiveEventLoop,
-                    id:winit::window::WindowId,event:winit::event::WindowEvent) {
+    fn window_event(&mut self, _event_loop: &winit::event_loop::ActiveEventLoop,
+                    _id:winit::window::WindowId,event:winit::event::WindowEvent) {
         // Window messages loop
         match event{
             // Do with exiting message
@@ -48,11 +48,11 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
     }
 }
 
-fn thyhappy_gui_run() {
+fn run() {
     let event_loop = winit::event_loop::EventLoop::new().unwrap();
     let mut app = ThyhappyApp::default();
 
-    event_loop.set_control_flow(ControlFlow::Wait);
+    event_loop.set_control_flow(ControlFlow::Poll);
 
     event_loop.run_app(&mut app).unwrap()
 }
@@ -61,10 +61,10 @@ use std::sync::RwLock;
 
 static SHOULD_CLOSE: RwLock<bool> = RwLock::new(false);
 
-pub fn thyhappy_gui_initialize(){
-    thyhappy_gui_run();
+pub fn initialize(){
+    run();
 }
 
-pub fn thyhappy_gui_window_should_close() -> bool{
+pub fn window_should_close() -> bool{
     *SHOULD_CLOSE.read().unwrap()
 }

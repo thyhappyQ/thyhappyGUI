@@ -26,7 +26,7 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
         }
     }
 
-    fn window_event(&mut self, _event_loop: &winit::event_loop::ActiveEventLoop,
+    fn window_event(&mut self, event_loop: &winit::event_loop::ActiveEventLoop,
                     _id:winit::window::WindowId,event:winit::event::WindowEvent) {
         // Window messages loop
         match event{
@@ -35,6 +35,9 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
                 // Tell caller the window should be closed
                 let mut guard = SHOULD_CLOSE.write().unwrap();
                 *guard = true;
+
+                // Exit the window
+                event_loop.exit();
             }
 
             // Do with painting message

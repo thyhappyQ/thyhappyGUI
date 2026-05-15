@@ -1,3 +1,5 @@
+pub mod thyhappy_gui_render;
+
 use winit;
 use winit::event_loop::ControlFlow;
 use winit::window::WindowAttributes;

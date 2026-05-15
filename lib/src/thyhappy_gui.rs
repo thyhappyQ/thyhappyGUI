@@ -1,4 +1,4 @@
-//pub mod thyhappy_gui_render;
+pub mod thyhappy_gui_render;
 
 use winit;
 

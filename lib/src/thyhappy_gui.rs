@@ -12,12 +12,15 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
         // Check if the window is already created
         if self.window.is_none() {
             // Create window
-            self.window = Some(
-                event_loop.create_window(
-                    WindowAttributes::default()
-                        .with_title("hello"))
-                    .unwrap()
-            )
+            {
+                let window = WindowAttributes::default()
+                    .with_title("hello")
+                    .with_visible(true);
+
+                self.window = Some(
+                    event_loop.create_window(window).unwrap()
+                )
+            }
         }
 
         // Request redraw window
@@ -42,7 +45,9 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
 
             // Do with painting message
             winit::event::WindowEvent::RedrawRequested => {
-
+                if let Some(window) = &self.window {
+                    window.request_redraw();
+                }
             }
 
             // Default

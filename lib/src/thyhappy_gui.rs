@@ -61,6 +61,10 @@ use std::sync::RwLock;
 
 static SHOULD_CLOSE: RwLock<bool> = RwLock::new(false);
 
+pub fn thyhappy_gui_initialize(){
+    thyhappy_gui_run();
+}
+
 pub fn thyhappy_gui_window_should_close() -> bool{
     *SHOULD_CLOSE.read().unwrap()
 }

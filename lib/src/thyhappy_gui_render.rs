@@ -81,4 +81,52 @@ impl ThyhappyGUIRenderer {
                         size_changed: false,
                 }
         }
+
+        const BACKGROUND_COLOR: [f32; 3] = [1.0, 1.0, 1.0];
+
+        fn render(&mut self) -> Result<(), wgpu::SurfaceError> {
+                // Get a frame object
+                let output = self.surface.get_current_texture()?;
+
+                //  Get the surface
+                let view = output.texture.create_view(&wgpu::TextureViewDescriptor::default());
+
+                // Create the commands encoder
+                let mut encoder = self.device.create_command_encoder(&Default::default());
+
+                // Begin to render
+                {
+                        let render_pass = encoder.begin_render_pass(
+                                &wgpu::RenderPassDescriptor{
+                                        // Description of this render pass
+                                        label: Some("Render Pass"),
+                                        color_attachments: &[
+                                                Some(wgpu::RenderPassColorAttachment{
+                                                        view: &view,
+                                                        resolve_target: None,
+                                                        ops: wgpu::Operations{
+                                                                // Set background color
+                                                                load: wgpu::LoadOp::Clear(wgpu::Color{
+                                                                        r: *Self::BACKGROUND_COLOR.get(0).unwrap() as f64,
+                                                                        g: *Self::BACKGROUND_COLOR.get(1).unwrap() as f64,
+                                                                        b: *Self::BACKGROUND_COLOR.get(2).unwrap() as f64,
+                                                                        a: 0.0,
+                                                                }),
+                                                                store: Default::default(),
+                                                        },
+                                                })
+                                        ],
+                                        depth_stencil_attachment: None,
+                                        timestamp_writes: None,
+                                        occlusion_query_set: None,
+                                }
+                        );
+                }
+
+                // Commit the render commands
+                self.queue.submit(Some(encoder.finish()));
+                output.present();
+
+                Ok(())
+        }
 }

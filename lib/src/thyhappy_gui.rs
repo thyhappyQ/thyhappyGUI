@@ -18,7 +18,7 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
             // Create window
             {
                 let window = winit::window::Window::default_attributes()
-                    .with_title("hello")
+                    .with_title("Title")
                     .with_visible(true)
                     .with_inner_size(winit::dpi::LogicalSize::new(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
 

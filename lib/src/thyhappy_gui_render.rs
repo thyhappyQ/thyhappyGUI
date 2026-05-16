@@ -77,7 +77,7 @@ impl ThyhappyGUIRenderer {
                 }
         }
 
-        const BACKGROUND_COLOR: [f32; 3] = [1.0, 1.0, 1.0];
+        const BACKGROUND_COLOR: [f32; 3] = [0.05, 0.05, 0.05];
 
         pub fn render(&mut self) -> Result<(), wgpu::SurfaceError> {
                 // Get a frame object

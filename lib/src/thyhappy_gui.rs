@@ -108,7 +108,6 @@ fn run() {
 }
 
 use std::sync::{Arc, RwLock};
-use crate::thyhappy_gui_render::ThyhappyGUIRenderer;
 
 static SHOULD_CLOSE: RwLock<bool> = RwLock::new(false);
 

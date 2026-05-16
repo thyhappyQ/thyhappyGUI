@@ -12,10 +12,6 @@ struct ThyhappyGUIRenderer {
         size_changed: bool,
 }
 
-pub fn initialize(){
-        todo!()
-}
-
 impl ThyhappyGUIRenderer {
         async fn new(window: Arc<Window>) -> Self {
                 // Create wgpu instance
@@ -96,7 +92,7 @@ impl ThyhappyGUIRenderer {
 
                 // Begin to render
                 {
-                        let render_pass = encoder.begin_render_pass(
+                        let _render_pass = encoder.begin_render_pass(
                                 &wgpu::RenderPassDescriptor{
                                         // Description of this render pass
                                         label: Some("Render Pass"),

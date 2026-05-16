@@ -4,7 +4,8 @@ use winit;
 
 #[derive(Default)]
 struct ThyhappyApp {
-    window: Option<winit::window::Window>,
+    window: Option<Arc<winit::window::Window>>,
+    renderer: Option<thyhappy_gui_render::ThyhappyGUIRenderer>
 }
 
 const DEFAULT_WINDOW_WIDTH: u32 = 800;
@@ -21,9 +22,21 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
                     .with_visible(true)
                     .with_inner_size(winit::dpi::LogicalSize::new(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
 
-                self.window = Some(
-                    event_loop.create_window(window).unwrap()
-                )
+
+                // Create
+                let window = event_loop.create_window(window).unwrap();
+
+                // Pack it to Arc
+                let window = Arc::new(window);
+
+                // Init render work
+                let thyhappy_gui_render = pollster::block_on(
+                    thyhappy_gui_render::ThyhappyGUIRenderer::new(window.clone())
+                    );
+
+                // Save
+                self.window = Some(window);
+                self.renderer = Some(thyhappy_gui_render);
             }
         }
 
@@ -49,6 +62,31 @@ impl winit::application::ApplicationHandler for ThyhappyApp {
 
             // Do with painting message
             winit::event::WindowEvent::RedrawRequested => {
+                // Check and render
+                if let Some(renderer) = &mut self.renderer{
+                    match renderer.render() {
+                        Ok(_) => {
+                            // If there is no any error, just do normal render work
+                        }
+                        Err(wgpu::SurfaceError::Lost) => {
+                            // If lost the surface
+                            // Rebuild it
+                            // But I have not implemented the resize function
+                            // So here are no any codes
+                        }
+                        Err(wgpu::SurfaceError::OutOfMemory) => {
+                            event_loop.exit();
+                        }
+                        _=>{
+                            // Default situation
+                            // Maybe there is a bug
+                            // Just give a tip
+                            println!("Failed to render");
+                        }
+                    }
+                }
+
+                // Request next frame
                 if let Some(window) = &self.window {
                     window.request_redraw();
                 }
@@ -69,7 +107,8 @@ fn run() {
     event_loop.run_app(&mut app).unwrap()
 }
 
-use std::sync::RwLock;
+use std::sync::{Arc, RwLock};
+use crate::thyhappy_gui_render::ThyhappyGUIRenderer;
 
 static SHOULD_CLOSE: RwLock<bool> = RwLock::new(false);
 

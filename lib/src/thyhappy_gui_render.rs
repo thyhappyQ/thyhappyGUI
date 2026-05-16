@@ -1,8 +1,7 @@
 use winit::window::Window;
 use std::sync::Arc;
 use wgpu;
-
-struct ThyhappyGUIRenderer {
+pub struct ThyhappyGUIRenderer {
         window: Arc<Window>,
         device: wgpu::Device,
         queue: wgpu::Queue,
@@ -13,7 +12,7 @@ struct ThyhappyGUIRenderer {
 }
 
 impl ThyhappyGUIRenderer {
-        async fn new(window: Arc<Window>) -> Self {
+        pub(crate) async fn new(window: Arc<Window>) -> Self {
                 // Create wgpu instance
                 let instance = wgpu::Instance::new(
                         wgpu::InstanceDescriptor {
@@ -80,7 +79,7 @@ impl ThyhappyGUIRenderer {
 
         const BACKGROUND_COLOR: [f32; 3] = [1.0, 1.0, 1.0];
 
-        fn render(&mut self) -> Result<(), wgpu::SurfaceError> {
+        pub fn render(&mut self) -> Result<(), wgpu::SurfaceError> {
                 // Get a frame object
                 let output = self.surface.get_current_texture()?;
 
